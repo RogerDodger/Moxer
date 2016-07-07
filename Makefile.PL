@@ -1,6 +1,6 @@
 #/usr/bin/env perl
 
-use 5.014;
+use 5.022;
 use Getopt::Long;
 
 GetOptions(\my %opt, 'devel|development');
