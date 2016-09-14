@@ -9,7 +9,7 @@ js_cat = awk 'BEGINFILE { printf "/* %s */;\n", FILENAME } { print } ENDFILE { p
 all: css js
 
 css:
-	sass --sourcemap=none $(sass_src) $(sass_dest)
+	sassc $(sass_src) $(sass_dest)
 	postcss --use autoprefixer -o $(sass_dest) $(sass_dest)
 
 js: js-cat js-min

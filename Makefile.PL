@@ -8,12 +8,12 @@ GetOptions(\my %opt, 'devel|development');
 my @production = qw/
 	Mojolicious
 	Mojolicious::Plugin::PlainRoutes
-	DBIx::Class
-	DBIx::Class::InflateColumn
+	Mojo::Pg
 	IO::Socket::SSL
-	HTML::Entities
 	Bytes::Random::Secure
 	Crypt::Eksblowfish::Bcrypt
+	IO::Prompt
+	LWP::UserAgent::ProgressBar
 /;
 
 my @development = qw/
