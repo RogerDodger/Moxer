@@ -11,7 +11,7 @@ CREATE TABLE sets (
    "id" serial primary key,
    "name" text unique,
    "code" text,
-   "code_gatherer"  text,
+   "code_gatherer" text,
    "code_old"  text,
    "code_mci" text,
    "released" date,
@@ -20,6 +20,9 @@ CREATE TABLE sets (
    "block" text,
    "booster" jsonb
 );
+
+CREATE INDEX ON sets (id);
+CREATE INDEX ON sets (name);
 
 CREATE TABLE cards (
    "id" serial primary key,
@@ -40,6 +43,9 @@ CREATE TABLE cards (
    "loyalty" integer
 );
 
+CREATE INDEX ON cards (id);
+CREATE INDEX ON cards (name);
+
 CREATE TABLE rulings (
    "id" serial primary key,
    "card_id" integer references cards(id),
@@ -47,6 +53,9 @@ CREATE TABLE rulings (
    "created" date,
    unique("card_id", "body")
 );
+
+CREATE INDEX ON rulings (id);
+CREATE INDEX ON rulings (card_id);
 
 CREATE TABLE prints (
    "id" serial primary key,
@@ -70,3 +79,8 @@ CREATE TABLE prints (
    "mci_number" text,
    "source" text
 );
+
+CREATE INDEX ON prints (id);
+CREATE INDEX ON prints (card_id);
+CREATE INDEX ON prints (set_id);
+CREATE INDEX ON prints (card_id, set_id);

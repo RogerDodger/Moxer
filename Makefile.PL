@@ -14,6 +14,7 @@ my @production = qw/
 	Crypt::Eksblowfish::Bcrypt
 	IO::Prompt
 	LWP::UserAgent::ProgressBar
+	YAML
 /;
 
 my @development = qw/

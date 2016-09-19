@@ -9,8 +9,10 @@ use Mojo::JSON qw/encode_json decode_json/;
 use Moxer::QueryBuilder qw/:all/;
 use Term::ProgressBar;
 
-# my $url = "https://mtgjson.com/json/AllSets-x.json.zip";
-my $url = "https://mtgjson.com/json/CNS-x.json.zip";
+binmode STDOUT, ':encoding(UTF-8)';
+
+# my $url = "https://mtgjson.com/json/CNS-x.json.zip";
+my $url = "https://mtgjson.com/json/AllSets-x.json.zip";
 my $filez = "site/" . basename $url;
 my $file = $filez =~ s/\.zip$//r;
 
@@ -36,8 +38,6 @@ my %fields = (
                   reserved released starter mci_number source/],
    },
 );
-
-binmode STDOUT, ':encoding(UTF-8)';
 
 sub load ($pg) {
    if (!-e $filez) {
