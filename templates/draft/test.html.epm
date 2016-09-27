@@ -1,0 +1,34 @@
+% layout 'default';
+
+% for my $n (14, 18) {
+<div class="Packmat">
+   <div class="Pack Pack-{{= $n + 1 }}">
+   % for my $i (0..$n) {
+      % my $card = $cards->[$i];
+      <div class="Card Card-{{= $i + 1 }}">
+         <div class="wrapper">
+            %#<img class="Card--Image" src="{{= cardurl $card->{multiverseid} }}">
+            <div class="Card--Fallback">
+               <div class="Card--Name">{{= $card->{name} }}</div>
+               <div class="Card--Type">{{= $card->{type} }}</div>
+
+               <div class="Card--Body">
+               % for my $line (split /\n/, $card->{body}) {
+                  <p>
+                     {{= $line }}
+                  </p>
+               % }
+               </div>
+
+               % if ($card->{power} || $card->{toughness}) {
+               <div class="Card--PT">
+                  {{= $card->{power} }}/{{= $card->{toughness} }}
+               </div>
+               % }
+            </div>
+         </div>
+      </div>
+   % }
+   </div>
+</div>
+% }

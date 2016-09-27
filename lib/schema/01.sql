@@ -22,6 +22,7 @@ CREATE TABLE sets (
 );
 
 CREATE INDEX ON sets (id);
+CREATE INDEX ON sets (code);
 CREATE INDEX ON sets (name);
 
 CREATE TABLE cards (
@@ -83,4 +84,43 @@ CREATE TABLE prints (
 CREATE INDEX ON prints (id);
 CREATE INDEX ON prints (card_id);
 CREATE INDEX ON prints (set_id);
-CREATE INDEX ON prints (card_id, set_id);
+
+CREATE VIEW printsx AS
+   SELECT
+      cards.layout,
+      name,
+      names,
+      mana_cost,
+      cmc,
+      colors,
+      color_identity,
+      cards.type,
+      supertypes,
+      types,
+      subtypes,
+      cards.body,
+      power,
+      toughness,
+      loyalty,
+      prints.id,
+      card_id,
+      set_id,
+      multiverseid,
+      variations,
+      uid,
+      rarity,
+      prints.type AS original_type,
+      prints.body AS original_body,
+      flavor,
+      artist,
+      "number",
+      watermark,
+      border,
+      timeshifted,
+      reserved,
+      released,
+      starter,
+      mci_number,
+      source
+   FROM prints
+   LEFT JOIN cards ON prints.card_id=cards.id;

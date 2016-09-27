@@ -10,6 +10,14 @@ sub startup ($self) {
    $self->plugin('Moxer::Config');
    $self->plugin('PlainRoutes', { autoname => 1 });
 
+   $self->plugin(EPRenderer => {
+      name     => 'epm',
+      template => {
+         tag_start => '{{',
+         tag_end   => '}}',
+      },
+   });
+
    my $dbc = $self->config('db');
 
    $self->helper(pg => sub {
@@ -18,6 +26,12 @@ sub startup ($self) {
          ->username($dbc->{username})
          ->password($dbc->{password});
    });
+
+   $self->helper(cardurl => sub {
+      "//gatherer.wizards.com/Handlers/Image.ashx?multiverseid=$_[1]&type=card";
+   });
+
+   $self->helper(db => sub { $self->pg->db });
 }
 
 1;

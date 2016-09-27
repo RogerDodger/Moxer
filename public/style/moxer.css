@@ -1,3 +1,566 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #4d4d4d url("images/45-degree-fabric-light.png") repeat; }
+
 * {
   box-sizing: border-box;
   color: #222; }
+
+* + * {
+  margin-top: 1em; }
+
+/*
+ * default layout
+ */
+footer {
+  margin-top: 1em;
+  font-size: 0.6em;
+  text-align: center; }
+
+.Packmat {
+  padding: 1em 1em; }
+
+.Pack {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.7em;
+  min-height: 20em;
+  position: relative; }
+  .Pack .Card + .Card {
+    margin-top: 0; }
+
+@media (max-width: 22em) {
+  .Pack-2 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-2 .Card-2 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 32em) {
+  .Pack-3 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-3 .Card-2 {
+    left: calc(50% - 7.14286em); }
+  .Pack-3 .Card-3 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 42em) {
+  .Pack-4 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-4 .Card-2 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-4 .Card-3 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-4 .Card-4 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 52em) {
+  .Pack-5 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-5 .Card-2 {
+    left: calc(25% - 3.57143em); }
+  .Pack-5 .Card-3 {
+    left: calc(50% - 7.14286em); }
+  .Pack-5 .Card-4 {
+    left: calc(75% - 10.71429em); }
+  .Pack-5 .Card-5 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 62em) {
+  .Pack-6 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-6 .Card-2 {
+    left: calc(20% - 2.85714em); }
+  .Pack-6 .Card-3 {
+    left: calc(40% - 5.71429em); }
+  .Pack-6 .Card-4 {
+    left: calc(60% - 8.57143em); }
+  .Pack-6 .Card-5 {
+    left: calc(80% - 11.42857em); }
+  .Pack-6 .Card-6 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 72em) {
+  .Pack-7 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-7 .Card-2 {
+    left: calc(16.66667% - 2.38095em); }
+  .Pack-7 .Card-3 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-7 .Card-4 {
+    left: calc(50% - 7.14286em); }
+  .Pack-7 .Card-5 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-7 .Card-6 {
+    left: calc(83.33333% - 11.90476em); }
+  .Pack-7 .Card-7 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 82em) {
+  .Pack-8 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-8 .Card-2 {
+    left: calc(14.28571% - 2.04082em); }
+  .Pack-8 .Card-3 {
+    left: calc(28.57143% - 4.08163em); }
+  .Pack-8 .Card-4 {
+    left: calc(42.85714% - 6.12245em); }
+  .Pack-8 .Card-5 {
+    left: calc(57.14286% - 8.16327em); }
+  .Pack-8 .Card-6 {
+    left: calc(71.42857% - 10.20408em); }
+  .Pack-8 .Card-7 {
+    left: calc(85.71429% - 12.2449em); }
+  .Pack-8 .Card-8 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 92em) {
+  .Pack-9 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-9 .Card-2 {
+    left: calc(12.5% - 1.78571em); }
+  .Pack-9 .Card-3 {
+    left: calc(25% - 3.57143em); }
+  .Pack-9 .Card-4 {
+    left: calc(37.5% - 5.35714em); }
+  .Pack-9 .Card-5 {
+    left: calc(50% - 7.14286em); }
+  .Pack-9 .Card-6 {
+    left: calc(62.5% - 8.92857em); }
+  .Pack-9 .Card-7 {
+    left: calc(75% - 10.71429em); }
+  .Pack-9 .Card-8 {
+    left: calc(87.5% - 12.5em); }
+  .Pack-9 .Card-9 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 102em) {
+  .Pack-10 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-10 .Card-2 {
+    left: calc(11.11111% - 1.5873em); }
+  .Pack-10 .Card-3 {
+    left: calc(22.22222% - 3.1746em); }
+  .Pack-10 .Card-4 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-10 .Card-5 {
+    left: calc(44.44444% - 6.34921em); }
+  .Pack-10 .Card-6 {
+    left: calc(55.55556% - 7.93651em); }
+  .Pack-10 .Card-7 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-10 .Card-8 {
+    left: calc(77.77778% - 11.11111em); }
+  .Pack-10 .Card-9 {
+    left: calc(88.88889% - 12.69841em); }
+  .Pack-10 .Card-10 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 112em) {
+  .Pack-11 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-11 .Card-2 {
+    left: calc(10% - 1.42857em); }
+  .Pack-11 .Card-3 {
+    left: calc(20% - 2.85714em); }
+  .Pack-11 .Card-4 {
+    left: calc(30% - 4.28571em); }
+  .Pack-11 .Card-5 {
+    left: calc(40% - 5.71429em); }
+  .Pack-11 .Card-6 {
+    left: calc(50% - 7.14286em); }
+  .Pack-11 .Card-7 {
+    left: calc(60% - 8.57143em); }
+  .Pack-11 .Card-8 {
+    left: calc(70% - 10em); }
+  .Pack-11 .Card-9 {
+    left: calc(80% - 11.42857em); }
+  .Pack-11 .Card-10 {
+    left: calc(90% - 12.85714em); }
+  .Pack-11 .Card-11 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 122em) {
+  .Pack-12 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-12 .Card-2 {
+    left: calc(9.09091% - 1.2987em); }
+  .Pack-12 .Card-3 {
+    left: calc(18.18182% - 2.5974em); }
+  .Pack-12 .Card-4 {
+    left: calc(27.27273% - 3.8961em); }
+  .Pack-12 .Card-5 {
+    left: calc(36.36364% - 5.19481em); }
+  .Pack-12 .Card-6 {
+    left: calc(45.45455% - 6.49351em); }
+  .Pack-12 .Card-7 {
+    left: calc(54.54545% - 7.79221em); }
+  .Pack-12 .Card-8 {
+    left: calc(63.63636% - 9.09091em); }
+  .Pack-12 .Card-9 {
+    left: calc(72.72727% - 10.38961em); }
+  .Pack-12 .Card-10 {
+    left: calc(81.81818% - 11.68831em); }
+  .Pack-12 .Card-11 {
+    left: calc(90.90909% - 12.98701em); }
+  .Pack-12 .Card-12 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 132em) {
+  .Pack-13 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-13 .Card-2 {
+    left: calc(8.33333% - 1.19048em); }
+  .Pack-13 .Card-3 {
+    left: calc(16.66667% - 2.38095em); }
+  .Pack-13 .Card-4 {
+    left: calc(25% - 3.57143em); }
+  .Pack-13 .Card-5 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-13 .Card-6 {
+    left: calc(41.66667% - 5.95238em); }
+  .Pack-13 .Card-7 {
+    left: calc(50% - 7.14286em); }
+  .Pack-13 .Card-8 {
+    left: calc(58.33333% - 8.33333em); }
+  .Pack-13 .Card-9 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-13 .Card-10 {
+    left: calc(75% - 10.71429em); }
+  .Pack-13 .Card-11 {
+    left: calc(83.33333% - 11.90476em); }
+  .Pack-13 .Card-12 {
+    left: calc(91.66667% - 13.09524em); }
+  .Pack-13 .Card-13 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 142em) {
+  .Pack-14 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-14 .Card-2 {
+    left: calc(7.69231% - 1.0989em); }
+  .Pack-14 .Card-3 {
+    left: calc(15.38462% - 2.1978em); }
+  .Pack-14 .Card-4 {
+    left: calc(23.07692% - 3.2967em); }
+  .Pack-14 .Card-5 {
+    left: calc(30.76923% - 4.3956em); }
+  .Pack-14 .Card-6 {
+    left: calc(38.46154% - 5.49451em); }
+  .Pack-14 .Card-7 {
+    left: calc(46.15385% - 6.59341em); }
+  .Pack-14 .Card-8 {
+    left: calc(53.84615% - 7.69231em); }
+  .Pack-14 .Card-9 {
+    left: calc(61.53846% - 8.79121em); }
+  .Pack-14 .Card-10 {
+    left: calc(69.23077% - 9.89011em); }
+  .Pack-14 .Card-11 {
+    left: calc(76.92308% - 10.98901em); }
+  .Pack-14 .Card-12 {
+    left: calc(84.61538% - 12.08791em); }
+  .Pack-14 .Card-13 {
+    left: calc(92.30769% - 13.18681em); }
+  .Pack-14 .Card-14 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 152em) {
+  .Pack-15 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-15 .Card-2 {
+    left: calc(7.14286% - 1.02041em); }
+  .Pack-15 .Card-3 {
+    left: calc(14.28571% - 2.04082em); }
+  .Pack-15 .Card-4 {
+    left: calc(21.42857% - 3.06122em); }
+  .Pack-15 .Card-5 {
+    left: calc(28.57143% - 4.08163em); }
+  .Pack-15 .Card-6 {
+    left: calc(35.71429% - 5.10204em); }
+  .Pack-15 .Card-7 {
+    left: calc(42.85714% - 6.12245em); }
+  .Pack-15 .Card-8 {
+    left: calc(50% - 7.14286em); }
+  .Pack-15 .Card-9 {
+    left: calc(57.14286% - 8.16327em); }
+  .Pack-15 .Card-10 {
+    left: calc(64.28571% - 9.18367em); }
+  .Pack-15 .Card-11 {
+    left: calc(71.42857% - 10.20408em); }
+  .Pack-15 .Card-12 {
+    left: calc(78.57143% - 11.22449em); }
+  .Pack-15 .Card-13 {
+    left: calc(85.71429% - 12.2449em); }
+  .Pack-15 .Card-14 {
+    left: calc(92.85714% - 13.26531em); }
+  .Pack-15 .Card-15 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 162em) {
+  .Pack-16 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-16 .Card-2 {
+    left: calc(6.66667% - 0.95238em); }
+  .Pack-16 .Card-3 {
+    left: calc(13.33333% - 1.90476em); }
+  .Pack-16 .Card-4 {
+    left: calc(20% - 2.85714em); }
+  .Pack-16 .Card-5 {
+    left: calc(26.66667% - 3.80952em); }
+  .Pack-16 .Card-6 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-16 .Card-7 {
+    left: calc(40% - 5.71429em); }
+  .Pack-16 .Card-8 {
+    left: calc(46.66667% - 6.66667em); }
+  .Pack-16 .Card-9 {
+    left: calc(53.33333% - 7.61905em); }
+  .Pack-16 .Card-10 {
+    left: calc(60% - 8.57143em); }
+  .Pack-16 .Card-11 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-16 .Card-12 {
+    left: calc(73.33333% - 10.47619em); }
+  .Pack-16 .Card-13 {
+    left: calc(80% - 11.42857em); }
+  .Pack-16 .Card-14 {
+    left: calc(86.66667% - 12.38095em); }
+  .Pack-16 .Card-15 {
+    left: calc(93.33333% - 13.33333em); }
+  .Pack-16 .Card-16 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 172em) {
+  .Pack-17 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-17 .Card-2 {
+    left: calc(6.25% - 0.89286em); }
+  .Pack-17 .Card-3 {
+    left: calc(12.5% - 1.78571em); }
+  .Pack-17 .Card-4 {
+    left: calc(18.75% - 2.67857em); }
+  .Pack-17 .Card-5 {
+    left: calc(25% - 3.57143em); }
+  .Pack-17 .Card-6 {
+    left: calc(31.25% - 4.46429em); }
+  .Pack-17 .Card-7 {
+    left: calc(37.5% - 5.35714em); }
+  .Pack-17 .Card-8 {
+    left: calc(43.75% - 6.25em); }
+  .Pack-17 .Card-9 {
+    left: calc(50% - 7.14286em); }
+  .Pack-17 .Card-10 {
+    left: calc(56.25% - 8.03571em); }
+  .Pack-17 .Card-11 {
+    left: calc(62.5% - 8.92857em); }
+  .Pack-17 .Card-12 {
+    left: calc(68.75% - 9.82143em); }
+  .Pack-17 .Card-13 {
+    left: calc(75% - 10.71429em); }
+  .Pack-17 .Card-14 {
+    left: calc(81.25% - 11.60714em); }
+  .Pack-17 .Card-15 {
+    left: calc(87.5% - 12.5em); }
+  .Pack-17 .Card-16 {
+    left: calc(93.75% - 13.39286em); }
+  .Pack-17 .Card-17 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 182em) {
+  .Pack-18 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-18 .Card-2 {
+    left: calc(5.88235% - 0.84034em); }
+  .Pack-18 .Card-3 {
+    left: calc(11.76471% - 1.68067em); }
+  .Pack-18 .Card-4 {
+    left: calc(17.64706% - 2.52101em); }
+  .Pack-18 .Card-5 {
+    left: calc(23.52941% - 3.36134em); }
+  .Pack-18 .Card-6 {
+    left: calc(29.41176% - 4.20168em); }
+  .Pack-18 .Card-7 {
+    left: calc(35.29412% - 5.04202em); }
+  .Pack-18 .Card-8 {
+    left: calc(41.17647% - 5.88235em); }
+  .Pack-18 .Card-9 {
+    left: calc(47.05882% - 6.72269em); }
+  .Pack-18 .Card-10 {
+    left: calc(52.94118% - 7.56303em); }
+  .Pack-18 .Card-11 {
+    left: calc(58.82353% - 8.40336em); }
+  .Pack-18 .Card-12 {
+    left: calc(64.70588% - 9.2437em); }
+  .Pack-18 .Card-13 {
+    left: calc(70.58824% - 10.08403em); }
+  .Pack-18 .Card-14 {
+    left: calc(76.47059% - 10.92437em); }
+  .Pack-18 .Card-15 {
+    left: calc(82.35294% - 11.76471em); }
+  .Pack-18 .Card-16 {
+    left: calc(88.23529% - 12.60504em); }
+  .Pack-18 .Card-17 {
+    left: calc(94.11765% - 13.44538em); }
+  .Pack-18 .Card-18 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 192em) {
+  .Pack-19 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-19 .Card-2 {
+    left: calc(5.55556% - 0.79365em); }
+  .Pack-19 .Card-3 {
+    left: calc(11.11111% - 1.5873em); }
+  .Pack-19 .Card-4 {
+    left: calc(16.66667% - 2.38095em); }
+  .Pack-19 .Card-5 {
+    left: calc(22.22222% - 3.1746em); }
+  .Pack-19 .Card-6 {
+    left: calc(27.77778% - 3.96825em); }
+  .Pack-19 .Card-7 {
+    left: calc(33.33333% - 4.7619em); }
+  .Pack-19 .Card-8 {
+    left: calc(38.88889% - 5.55556em); }
+  .Pack-19 .Card-9 {
+    left: calc(44.44444% - 6.34921em); }
+  .Pack-19 .Card-10 {
+    left: calc(50% - 7.14286em); }
+  .Pack-19 .Card-11 {
+    left: calc(55.55556% - 7.93651em); }
+  .Pack-19 .Card-12 {
+    left: calc(61.11111% - 8.73016em); }
+  .Pack-19 .Card-13 {
+    left: calc(66.66667% - 9.52381em); }
+  .Pack-19 .Card-14 {
+    left: calc(72.22222% - 10.31746em); }
+  .Pack-19 .Card-15 {
+    left: calc(77.77778% - 11.11111em); }
+  .Pack-19 .Card-16 {
+    left: calc(83.33333% - 11.90476em); }
+  .Pack-19 .Card-17 {
+    left: calc(88.88889% - 12.69841em); }
+  .Pack-19 .Card-18 {
+    left: calc(94.44444% - 13.49206em); }
+  .Pack-19 .Card-19 {
+    left: calc(100% - 14.28571em); } }
+
+@media (max-width: 202em) {
+  .Pack-20 .Card {
+    position: absolute;
+    left: 0%;
+    margin-left: 0; }
+  .Pack-20 .Card-2 {
+    left: calc(5.26316% - 0.75188em); }
+  .Pack-20 .Card-3 {
+    left: calc(10.52632% - 1.50376em); }
+  .Pack-20 .Card-4 {
+    left: calc(15.78947% - 2.25564em); }
+  .Pack-20 .Card-5 {
+    left: calc(21.05263% - 3.00752em); }
+  .Pack-20 .Card-6 {
+    left: calc(26.31579% - 3.7594em); }
+  .Pack-20 .Card-7 {
+    left: calc(31.57895% - 4.51128em); }
+  .Pack-20 .Card-8 {
+    left: calc(36.84211% - 5.26316em); }
+  .Pack-20 .Card-9 {
+    left: calc(42.10526% - 6.01504em); }
+  .Pack-20 .Card-10 {
+    left: calc(47.36842% - 6.76692em); }
+  .Pack-20 .Card-11 {
+    left: calc(52.63158% - 7.5188em); }
+  .Pack-20 .Card-12 {
+    left: calc(57.89474% - 8.27068em); }
+  .Pack-20 .Card-13 {
+    left: calc(63.15789% - 9.02256em); }
+  .Pack-20 .Card-14 {
+    left: calc(68.42105% - 9.77444em); }
+  .Pack-20 .Card-15 {
+    left: calc(73.68421% - 10.52632em); }
+  .Pack-20 .Card-16 {
+    left: calc(78.94737% - 11.2782em); }
+  .Pack-20 .Card-17 {
+    left: calc(84.21053% - 12.03008em); }
+  .Pack-20 .Card-18 {
+    left: calc(89.47368% - 12.78195em); }
+  .Pack-20 .Card-19 {
+    left: calc(94.73684% - 13.53383em); }
+  .Pack-20 .Card-20 {
+    left: calc(100% - 14.28571em); } }
+
+.Card {
+  height: 20em;
+  width: 14.28571em;
+  overflow: hidden; }
+  .Card wrapper {
+    position: relative; }
+  .Card:hover {
+    z-index: 21; }
+
+.Card--Fallback {
+  font-size: 0.9em;
+  background: white;
+  border: 0.15em solid black;
+  border-radius: 0.83333em;
+  padding: 0.5em;
+  position: absolute;
+  height: 22.22222em;
+  width: 15.87302em; }
+
+.Card--Image {
+  border-radius: 0.75em;
+  height: 20em;
+  width: 14.28571em;
+  position: absolute;
+  z-index: 1; }
+
+.Card--Name {
+  font-size: 1.05em; }
+
+.Card--Body {
+  font-size: 0.9em; }
+
+.Card--PT {
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em; }
