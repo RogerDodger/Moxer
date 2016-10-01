@@ -8,18 +8,17 @@
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <link rel="stylesheet" href="/style/vendor.css">
       <link rel="stylesheet" href="/style/moxer.css">
 
       <script src="/js/vendor.js"></script>
       <script src="/js/moxer.js"></script>
    </head>
    <body>
-      <nav class="Topbar">
-
-      </nav>
-
+      <header>
+         Moxer
+      </header>
       <main>{{= content }}</main>
-
       <footer>
          Wizards of the Coast, Magic: The Gathering, and their logos are trademarks of Wizards of the Coast LLC. © 1995-2016 Wizards. All rights reserved. Moxer is not affiliated with Wizards of the Coast LLC.
       </footer>

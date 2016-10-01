@@ -4,13 +4,16 @@ sass_dest = $(css_dir)/moxer.css
 
 js_url = /js
 js_dir = public$(js_url)
-js_cat = awk 'BEGINFILE { printf "/* %s */;\n", FILENAME } { print } ENDFILE { print "" }'
+
+js_cat  = awk 'BEGINFILE { printf "/* %s */;\n", FILENAME } { print } ENDFILE { print "" }'
+css_cat = awk 'BEGINFILE { printf "/* %s */\n", FILENAME } { print } ENDFILE { print "" }'
 
 all: css js
 
 css:
 	sassc $(sass_src) $(sass_dest)
 	postcss --use autoprefixer -o $(sass_dest) $(sass_dest)
+	$(css_cat) $(css_dir)/vendor/*.css > $(css_dir)/vendor.css
 
 js: js-cat js-min
 

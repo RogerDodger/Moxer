@@ -1,0 +1,37 @@
+<div class="Card">
+   <div class="Card--Front">
+      % if (1) {
+      <div class="Card--Image"
+           style="background-image: url({{= cardurl $card->{multiverseid} }})">
+      </div>
+      % }
+
+      % my $color = 'colorless';
+      % if (my $colors = $card->{colors}) {
+      %    $color = $colors->@* == 1 ? lc $colors->[0] : 'gold';
+      % }
+      <div class="Card--Fallback {{= $color }}">
+         <div class="Card--Header">
+            <div class="Card--Name">{{= $card->{name} }}</div>
+            <div class="Card--Manacost">{{= $card->{mana_cost} }}</div>
+         </div>
+         <div class="Card--Type">{{= $card->{type} }}</div>
+
+         <div class="Card--Body">
+         % for my $line (split /\n/, $card->{body}) {
+            <div>{{= $line }}</div>
+         % }
+         </div>
+
+         % if (defined $card->{power} || defined $card->{toughness}) {
+         <div class="Card--PT">
+            {{= $card->{power} }}/{{= $card->{toughness} }}
+         </div>
+         % } elsif (defined $card->{loyalty}) {
+         <div class="Card--Loyalty">
+            %= $card->{loyalty}
+         </div>
+         % }
+      </div>
+   </div>
+</div>

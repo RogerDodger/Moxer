@@ -1,34 +1,30 @@
 % layout 'default';
 
-% for my $n (14, 18) {
-<div class="Packmat">
-   <div class="Pack Pack-{{= $n + 1 }}">
-   % for my $i (0..$n) {
-      % my $card = $cards->[$i];
-      <div class="Card Card-{{= $i + 1 }}">
-         <div class="wrapper">
-            %#<img class="Card--Image" src="{{= cardurl $card->{multiverseid} }}">
-            <div class="Card--Fallback">
-               <div class="Card--Name">{{= $card->{name} }}</div>
-               <div class="Card--Type">{{= $card->{type} }}</div>
-
-               <div class="Card--Body">
-               % for my $line (split /\n/, $card->{body}) {
-                  <p>
-                     {{= $line }}
-                  </p>
-               % }
-               </div>
-
-               % if ($card->{power} || $card->{toughness}) {
-               <div class="Card--PT">
-                  {{= $card->{power} }}/{{= $card->{toughness} }}
-               </div>
-               % }
-            </div>
-         </div>
+<div class="Draft">
+   <div class="Draft--Header">
+      <div class="Draft--Timer--Container">
+         <div class="Draft--Timer">0:50</div>
       </div>
+      <div class="Draft--Queue">
+         % for (19, 14, 10, 5, 1) {
+         <div class="Draft--Queue--Pack Pack-{{= $_ }}"></div>
+         % }
+      </div>
+   </div>
+
+   <div class="Pack Pack-8">
+   % for my $card ($cards->@[0..7]) {
+      %= include 'card', card => $card;
    % }
    </div>
+
+   <div class="Draft--Deck">
+      <div class="Draft--Deck--Main">
+         <div class="Deck--Column"></div>
+      </div>
+
+      <div class="Draft--Deck--Side">
+         <div class="Deck--Column"></div>
+      </div>
+   </div>
 </div>
-% }

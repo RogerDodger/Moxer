@@ -4,8 +4,18 @@
 
 $mobile: "(max-width: 40rem)";
 
+$card-height: 20em;
+$card-width: $card-height / 1.4;
+$card-radius: 1em;
+$card-zoom: 0.75;
+
+$packsize-max: 20;
+$draftmat-padding: 1em;
+
 // ============================================================================
 // Partials
 // ============================================================================
 
 @import "global";
+@import "card";
+@import "draft";

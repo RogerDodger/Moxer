@@ -1,0 +1,148 @@
+.Draft {
+   background: hsla(0, 0%, 30%, 1) url('images/45-degree-fabric-light.png') repeat;
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+
+   padding: 0 $draftmat-padding;
+}
+
+.Draft--Header {
+   margin: 1em 0 1em -1em;
+   position: relative;
+}
+
+.Draft--Timer--Container {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   height: $card-width * $card-zoom;
+   margin: 0 1em;
+   position: absolute;
+   width: 100%;
+}
+
+.Draft--Timer {
+   color: hsla(100, 50%, 70%, 1);
+   font-size: 5em;
+   text-shadow: -0.025em 0.025em 0.025em black;
+   user-select: none;
+}
+
+.Draft--Queue {
+   display: flex;
+   justify-content: flex-end;
+
+   * + * {
+      margin-left: 0.8em;
+   }
+}
+
+.Draft--Queue--Pack {
+   border-radius: $card-radius;
+   background-size: 100%;
+   background-image: url('images/card-back-large-rotate-left.jpg');
+   flex-shrink: 0;
+   font-size: $card-zoom * 1em;
+   /* Queued Packs are laid sideways */
+   height: $card-width;
+   width: $card-height;
+
+   @for $i from 1 through $packsize-max {
+      &.Pack-#{$i} {
+         box-shadow: ($i * 0.01em) ($i * 0.01em) 0.2em ($i * 0.025em) hsla(0, 0%, 0%, 0.8);
+      }
+   }
+}
+
+.Pack {
+   display: flex;
+   justify-content: center;
+   min-height: $card-height * $card-zoom;
+   position: relative;
+}
+
+@for $i from 2 through $packsize-max {
+   // This query is very fickle
+   //
+   // Essentially, we're alternating between two layout modes. The first is a
+   // simple flexbox with center aligned cards. The second is the following
+   // absolutely positioned cards that look like an ordinary spread hand.
+   //
+   // Since the geometry of these is different, we need a breakpoint to switch
+   // layout modes. That breakpoint is "when the cards no longer fit in the
+   // container side by side", but there's no way to query the container's
+   // width with a @media query, so we calculate from variables the vewport
+   // width at which the container will be to small.
+   @media (max-width: #{$card-zoom * $i * $card-width + $draftmat-padding * 2}) {
+      .Pack {
+         // Select a first child that is $i from last, and all its siblings,
+         // i.e., select all .Cards that have $i-1 siblings
+         .Card:first-child:nth-last-child(#{$i}),
+         .Card:first-child:nth-last-child(#{$i}) ~ .Card {
+            position: absolute;
+            left: 0%;
+            margin-left: 0;
+         }
+
+         @for $j from 2 through $i {
+            $ratio: ($j - 1)/($i - 1);
+            .Card:first-child:nth-last-child(#{$i}) ~ .Card:nth-child(#{$j}) {
+               // The last card will take up exactly $card-width space, and
+               // then the rest of the cards will fill the remaining space
+               // evenly
+               left: calc(#{100% * $ratio} - #{$card-width * $ratio});
+            }
+         }
+      }
+   }
+}
+
+.Draft--Deck {
+   display: flex;
+   flex-basis: $card-height * $card-zoom;
+   flex-direction: row;
+   flex-grow: 1;
+   margin-top: 0.5em;
+   padding: 0.5em 0;
+   border-top: 0.15em solid hsla(0, 0%, 0%, 0.6);
+   overflow-x: auto;
+}
+
+.Draft--Deck--Main,
+.Draft--Deck--Side {
+   display: flex;
+   flex-direction: row;
+   flex-basis: $card-width * $card-zoom + 1em;
+}
+
+.Draft--Deck--Main {
+   padding-right: 0.5em;
+   flex-grow: 1;
+}
+
+.Draft--Deck--Side {
+   padding-left: 0.5em;
+   border-left: 0.15em solid hsla(0, 0%, 0%, 0.6);
+   flex-grow: 0;
+}
+
+.Deck--Column {
+   display: flex;
+   flex-direction: column;
+   min-height: $card-height * $card-zoom;
+   min-width: $card-width * $card-zoom;
+
+   .Card + .Card {
+      margin-top: -0.9 * $card-height;
+   }
+
+   & + * {
+      margin-left: 0.2em;
+   }
+
+   &:last-child {
+      flex-grow: 1;
+      min-width: 2em;
+   }
+}

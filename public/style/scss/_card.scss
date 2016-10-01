@@ -1,0 +1,103 @@
+.Card {
+   font-family: sans-serif;
+   height: $card-height;
+   width: $card-width;
+   font-size: $card-zoom * 1em;
+   border-radius: 0.75em;
+   box-shadow: 0 0 0.2em hsla(0, 0%, 0%, 0.6);
+   position: relative;
+   z-index: 2;
+
+   &.selected {
+      box-shadow: 0 0 0.4em 0.4em hsla(200, 100%, 75%, 0.8);
+      z-index: 3;
+   }
+
+   &:hover {
+      z-index: 4;
+   }
+}
+
+.Card--Image {
+   background-size: 100%;
+   border-radius: 0.75em;
+   height: $card-height;
+   width: $card-width;
+   position: absolute;
+   z-index: 1;
+}
+
+.Card--Fallback {
+   $zoom: 0.8;
+   font-size: $zoom * 1em;
+   border: 0.15em solid black;
+   border-radius: $card-radius * $zoom;
+   padding: 0.5em / $zoom;
+   overflow: hidden;
+   height: $card-height / $zoom;
+   width: $card-width / $zoom;
+
+   display: flex;
+   flex-direction: column;
+
+   $colors: (
+      "colorless" : (hue: 0,   sat: 0%,  l: 89%),
+      "black"     : (hue: 0,   sat: 0%,  l: 72%),
+      "white"     : (hue: 0,   sat: 0%,  l: 100%),
+      "red"       : (hue: 0,   sat: 35%, l: 90%),
+      "blue"      : (hue: 240, sat: 35%, l: 90%),
+      "green"     : (hue: 120, sat: 35%, l: 90%),
+      "gold"      : (hue: 51,  sat: 35%, l: 90%)
+   );
+
+   @each $name, $color in $colors {
+      &.#{$name} {
+         background-color: hsla(
+            map-get($color, 'hue'),
+            map-get($color, 'sat'),
+            map-get($color, 'l'), 1);
+      }
+   }
+
+   &:hover {
+      overflow: auto;
+   }
+
+   * + * {
+      margin-top: 1em;
+   }
+}
+
+.Card--Header {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
+.Card--Name {
+   font-weight: bold;
+}
+
+.Card--Manacost {
+   margin-left: 0.25em;
+   margin-top: 0;
+   text-align: end;
+}
+
+.Card--Type {
+   font-weight: bold;
+}
+
+.Card--Body {
+   flex-grow: 1;
+   font-size: 0.93em;
+
+   * + * {
+      margin-top: 0.7em;
+   }
+}
+
+.Card--PT,
+.Card--Loyalty {
+   align-self: flex-end;
+}

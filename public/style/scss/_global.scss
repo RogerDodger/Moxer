@@ -1,128 +1,38 @@
-body {
-   padding: 0;
-   margin: 0;
-
-   background: hsla(0, 0%, 30%, 1) url('images/45-degree-fabric-light.png') repeat;
-}
-
 * {
    box-sizing: border-box;
    color: #222;
-}
-
-* + * {
-   margin-top: 1em;
 }
 
 /*
  * default layout
  */
 
-footer {
-   margin-top: 1em;
-   font-size: 0.6em;
+body {
+   padding: 0;
+   margin: 0;
+
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+header {
+   background-color: hsla(0, 0%, 10%, 1);
+   border-bottom: 0.2em solid hsla(0, 0%, 20%, 1);
+   color: hsla(0, 0%, 90%, 1);
+   padding: 0.5em;
    text-align: center;
 }
 
-$card-height: 20em;
-$card-width: $card-height / 1.4;
-$packsize-max: 20;
-$card-zoom: 0.7;
-$card-spacing: 0.15em;
-$packmat-padding: 1em;
-
-.Packmat {
-   padding: 1em $packmat-padding;
-}
-
-.Pack {
+main {
+   flex-grow: 1;
    display: flex;
-   justify-content: center;
-   font-size: $card-zoom * 1em;
-   min-height: $card-height;
-   position: relative;
-
-   .Card + .Card {
-      margin-top: 0;
-   }
+   flex-direction: column;
 }
 
-@for $i from 2 through $packsize-max {
-   // This query is very fickle
-   //
-   // Essentially, we're alternating between two layout modes. The first is a
-   // simple flexbox with center aligned cards. The second is the following
-   // absolutely positioned cards that look like an ordinary spread hand.
-   //
-   // Since the geometry of these is different, we need a breakpoint to switch
-   // layout modes. That breakpoint is "when the cards no longer fit in the
-   // container side by side", but there's no way to query the container's
-   // width with a @media query, so we calculate from variables the vewport
-   // width at which the container will be to small.
-   @media (max-width: #{$card-zoom * $i * $card-width + $packmat-padding * 2}) {
-      .Pack-#{$i} {
-         .Card {
-            position: absolute;
-            left: 0%;
-            margin-left: 0;
-         }
-
-         // The last card will take up exactly $card-width space, and then the rest of the cards
-         // will fill the remaining space evenly
-         @for $j from 2 through $i {
-            $ratio: ($j - 1)/($i - 1);
-            .Card-#{$j} {
-               left: calc(#{100% * $ratio} - #{$card-width * $ratio});
-            }
-         }
-      }
-   }
-}
-
-.Card {
-   height: $card-height;
-   width: $card-width;
-   overflow: hidden;
-
-   wrapper {
-      position: relative;
-   }
-
-   &:hover {
-      z-index: $packsize-max + 1;
-   }
-}
-
-.Card--Fallback {
-   $zoom: 0.9;
-   font-size: $zoom * 1em;
-   background: white;
-   border: 0.15em solid black;
-   border-radius: 0.75em / $zoom;
-   padding: 0.5em;
-   position: absolute;
-   height: $card-height / $zoom;
-   width: $card-width / $zoom;
-}
-
-.Card--Image {
-   border-radius: 0.75em;
-   height: $card-height;
-   width: $card-width;
-   position: absolute;
-   z-index: 1;
-}
-
-.Card--Name {
-   font-size: 1.05em;
-}
-
-.Card--Body {
-   font-size: 0.9em;
-}
-
-.Card--PT {
-   position: absolute;
-   bottom: 0.5em;
-   right: 0.5em;
+footer {
+   border-top: 0.2em solid hsla(0, 0%, 20%, 1);
+   padding: 1em;
+   font-size: 0.6em;
+   text-align: center;
 }
