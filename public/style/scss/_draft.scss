@@ -77,7 +77,7 @@
    @media (max-width: #{$card-zoom * $i * $card-width + $draftmat-padding * 2}) {
       .Pack {
          // Select a first child that is $i from last, and all its siblings,
-         // i.e., select all .Cards that have $i-1 siblings
+         // i.e., select all children in a pack of $i cards
          .Card:first-child:nth-last-child(#{$i}),
          .Card:first-child:nth-last-child(#{$i}) ~ .Card {
             position: absolute;
@@ -100,7 +100,7 @@
 
 .Draft--Deck {
    display: flex;
-   flex-basis: $card-height * $card-zoom;
+   flex-basis: $card-height * $card-zoom + 1em;
    flex-direction: row;
    flex-grow: 1;
    margin-top: 0.5em;
@@ -113,7 +113,7 @@
 .Draft--Deck--Side {
    display: flex;
    flex-direction: row;
-   flex-basis: $card-width * $card-zoom + 1em;
+   flex-basis: $card-width * $card-zoom * 2 + 1em;
 }
 
 .Draft--Deck--Main {

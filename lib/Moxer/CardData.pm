@@ -4,7 +4,6 @@ use Moxer::Base -strict;
 
 use Encode;
 use File::Basename;
-use LWP::UserAgent::ProgressBar;
 use Mojo::JSON qw/encode_json decode_json/;
 use Moxer::QueryBuilder qw/:all/;
 use Term::ProgressBar;
@@ -18,9 +17,9 @@ my $file = $filez =~ s/\.zip$//r;
 
 my %fields = (
    sets => {
-      file => [qw/name code gathererCode oldCode magicCardsInfoCode releaseDate
+      file => [qw/id name gathererCode oldCode magicCardsInfoCode releaseDate
                   border type block booster/],
-      db =>   [qw/name code code_gatherer code_old code_mci released
+      db =>   [qw/id name code_gatherer code_old code_mci released
                   border type block booster/],
    },
    cards => {
@@ -62,8 +61,9 @@ sub load ($pg) {
       return if $set->{onlineOnly};
 
       printf "[%s] %s\n", $set->{code}, $set->{name};
+      $set->{id} = $set->{code};
       $set->{booster} = encode_json $set->{booster};
-      my $sid = _upsert($db, $set, 'sets', 'code');
+      my $sid = _upsert($db, $set, 'sets', 'id');
 
       my $progress = Term::ProgressBar->new(scalar $set->{cards}->@*);
       for my $card ($set->{cards}->@*) {

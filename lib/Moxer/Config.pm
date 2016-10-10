@@ -6,6 +6,7 @@ use YAML;
 # Configuration variables not changeable in deployment
 our %CONSTANTS = (
    cfn => 'site/config.yml',
+   cdfn => 'site/cards.sql',
 );
 
 # Configuration variables set by default but changeable in deployment

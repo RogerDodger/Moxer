@@ -764,8 +764,8 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-preferred-size: 15em;
-      flex-basis: 15em;
+  -ms-flex-preferred-size: 16em;
+      flex-basis: 16em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -787,8 +787,8 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-preferred-size: 11.71429em;
-      flex-basis: 11.71429em; }
+  -ms-flex-preferred-size: 22.42857em;
+      flex-basis: 22.42857em; }
 
 .Draft--Deck--Main {
   padding-right: 0.5em;

@@ -1,7 +1,7 @@
 package Moxer;
 use Moxer::Base 'Mojolicious';
 
-use Mojo::Pg;
+use Moxer::Pg;
 
 # This method will run once at server start
 sub startup ($self) {
@@ -18,13 +18,8 @@ sub startup ($self) {
       },
    });
 
-   my $dbc = $self->config('db');
-
    $self->helper(pg => sub {
-      state $pg = Mojo::Pg->new
-         ->dsn("dbi:Pg:db=$dbc->{name};host=$dbc->{host};port=$dbc->{port}")
-         ->username($dbc->{username})
-         ->password($dbc->{password});
+      state $pg = Moxer::Pg->new($self->config('db'));
    });
 
    $self->helper(cardurl => sub {

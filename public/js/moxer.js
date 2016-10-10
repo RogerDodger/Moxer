@@ -44,7 +44,7 @@ $(document).ready(function () {
    drake.on('drag', changeDirection);
    drake.on('over', changeDirection);
 
-   // Ensure that main and sideboard have exactly one blank column at all times
+   // Ensure that main and sideboard have exactly one blank column on the right at all times
    drake.on('drop', function () {
       $('.Draft--Deck--Main, .Draft--Deck--Side').each(function () {
          var last = this.children[this.children.length - 1];
@@ -62,16 +62,6 @@ $(document).ready(function () {
             }
          }
       });
-   });
-
-   var i = 1;
-   $('.Draft--Header').on('click', function () {
-      var $q = $('.Draft--Queue');
-      if ($q.children().length >= 7) {
-         $q.empty();
-      }
-      $q.prepend('<div class="Draft--Queue--Pack Pack-' + i + ' "></div>');
-      i = i % 15 + 1;
    });
 });
 

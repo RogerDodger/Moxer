@@ -1,16 +1,7 @@
-CREATE TABLE _db_version (
-   "version" text
-);
-
-CREATE TABLE users (
-   "name" text,
-   "password" text
-);
-
+-- 1 up
 CREATE TABLE sets (
-   "id" serial primary key,
+   "id" text primary key,
    "name" text unique,
-   "code" text,
    "code_gatherer" text,
    "code_old"  text,
    "code_mci" text,
@@ -22,7 +13,6 @@ CREATE TABLE sets (
 );
 
 CREATE INDEX ON sets (id);
-CREATE INDEX ON sets (code);
 CREATE INDEX ON sets (name);
 
 CREATE TABLE cards (
@@ -61,7 +51,7 @@ CREATE INDEX ON rulings (card_id);
 CREATE TABLE prints (
    "id" serial primary key,
    "card_id" integer references cards(id),
-   "set_id" integer references sets(id),
+   "set_id" text references sets(id),
    "multiverseid" integer,
    "variations" integer[],
    "uid" text unique,
@@ -88,39 +78,46 @@ CREATE INDEX ON prints (set_id);
 CREATE VIEW printsx AS
    SELECT
       cards.layout,
-      name,
-      names,
-      mana_cost,
-      cmc,
-      colors,
-      color_identity,
+      cards.name,
+      cards.names,
+      cards.mana_cost,
+      cards.cmc,
+      cards.colors,
+      cards.color_identity,
       cards.type,
-      supertypes,
-      types,
-      subtypes,
+      cards.supertypes,
+      cards.types,
+      cards.subtypes,
       cards.body,
-      power,
-      toughness,
-      loyalty,
+      cards.power,
+      cards.toughness,
+      cards.loyalty,
       prints.id,
-      card_id,
-      set_id,
-      multiverseid,
-      variations,
-      uid,
-      rarity,
+      prints.card_id,
+      prints.set_id,
+      prints.multiverseid,
+      prints.variations,
+      prints.uid,
+      prints.rarity,
       prints.type AS original_type,
       prints.body AS original_body,
-      flavor,
-      artist,
-      "number",
-      watermark,
-      border,
-      timeshifted,
-      reserved,
-      released,
-      starter,
-      mci_number,
-      source
+      prints.flavor,
+      prints.artist,
+      prints.number,
+      prints.watermark,
+      prints.border,
+      prints.timeshifted,
+      prints.reserved,
+      prints.released,
+      prints.starter,
+      prints.mci_number,
+      prints.source
    FROM prints
    LEFT JOIN cards ON prints.card_id=cards.id;
+
+-- 1 down
+DROP VIEW printsx;
+DROP TABLE prints;
+DROP TABLE rulings;
+DROP TABLE cards;
+DROP TABLE sets;

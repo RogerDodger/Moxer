@@ -9,6 +9,7 @@ use File::Basename;
 use IO::Prompt;
 use Moxer::CardData;
 use Moxer::Config;
+use Moxer::Pg;
 use YAML;
 
 my $rng = Bytes::Random::Secure->new(NonBlocking => 1);
@@ -30,24 +31,7 @@ sub run ($self) {
       chmod 0600, $cfn;
    }
 
-   my $dbh = $self->app->pg->db;
-   if ($dbh->tables(undef, '', '_db_version')) {
-      if (prompt("Database schema exists. Overwrite it? [no] ") =~ /^y/i) {
-         $dbh->disconnect;
-         system('dropdb', $conf{db}{name});
-         system('createdb', $conf{db}{name});
-      }
-      else {
-         return;
-      }
-   }
-
-   my @sql = sort glob 'lib/schema/*.sql';
-   system('psql', '-f', $_, $conf{db}{name}) for @sql;
-   $self->app->pg->db->query(q{
-      INSERT INTO _db_version VALUES (?) }, basename $sql[-1]);
-
-   Moxer::CardData::load($self->app->pg);
+   $self->app->pg->migrations->migrate;
 }
 
 1;
